@@ -76,7 +76,9 @@ Refine steps =  4 -> test acc = 0.0772
 Refine steps =  5 -> test acc = 0.0772
 
 Refine steps =  8 -> test acc = 0.0772
+
 -------------------------------------------------------------------
+
 ** After 5 epochs of training **
 
 Refine steps =  0 -> test acc = 0.4642
