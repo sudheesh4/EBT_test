@@ -59,7 +59,7 @@ Can empirically check whether more refinement steps (i.e., more “thinking”) 
 
 ---
 
-## Sample test run 
+## Sample run on FashionMNIST 
 
 EBT: accuracy vs refinement steps (test set) ===
 
