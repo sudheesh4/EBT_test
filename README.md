@@ -57,7 +57,7 @@ Can empirically check whether more refinement steps (i.e., more “thinking”) 
   * Trains for 5 epochs on Fashion-MNIST (batch 256, image size 224).
   * Evaluates test accuracy for several refinement steps to probe the “think longer” effect.
 
----
+----------------------------------------------------------------------------------------------------
 
 ## Sample run on FashionMNIST 
 
@@ -76,7 +76,7 @@ Refine steps =  4 -> test acc = 0.0772
 Refine steps =  5 -> test acc = 0.0772
 
 Refine steps =  8 -> test acc = 0.0772
-
+-------------------------------------------------------------------
 ** After 5 epochs of training **
 
 Refine steps =  0 -> test acc = 0.4642
