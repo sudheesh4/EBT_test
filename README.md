@@ -1,6 +1,6 @@
 # EBT on MNIST/Fashion-MNIST with a Frozen ViT Backbone
 
-This repo contains a compact PyTorch implementation of an **Energy-Based head** trained on top of a **frozen Vision Transformer (ViT)** feature extractor. It showcases “**thinking longer helps**?” by iteratively refining a latent `z` via gradient descent on an energy function before producing logits.
+This repo contains a compact PyTorch implementation of an **Energy-Based head** (ref: https://energy-based-transformers.github.io/) trained on top of a **frozen Vision Transformer (ViT)** feature extractor. It showcases “**thinking longer helps**?” by iteratively refining a latent `z` via gradient descent on an energy function before producing logits.
 
 * **Backbone:** any Hugging Face vision model (default: `facebook/dinov2-base`) kept **frozen**
 * **Head:** EBT module with learnable initializer `g(r_x) → z0`, energy network `E(r_x, z)`, and classifier `h(z_T)`
@@ -92,3 +92,17 @@ Refine steps =  4 -> test acc = 0.8955
 Refine steps =  5 -> test acc = 0.9088
 
 Refine steps =  8 -> test acc = 0.9140
+
+--------
+
+### Citation
+
+@misc{gladstone2025energybasedtransformersscalablelearners,
+  title={Energy-Based Transformers are Scalable Learners and Thinkers},
+  author={Alexi Gladstone and Ganesh Nanduru and Md Mofijul Islam and Peixuan Han and Hyeonjeong Ha and Aman Chadha and Yilun Du and Heng Ji and Jundong Li and Tariq Iqbal},
+  year={2025},
+  eprint={2507.02092},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2507.02092}
+}
