@@ -61,10 +61,16 @@ Can empirically check whether more refinement steps (i.e., more “thinking”) 
 
 ## Sample test run after 5 epochs of training
 
->>> EBT: accuracy vs refinement steps (test set) ===
+EBT: accuracy vs refinement steps (test set) ===
+
 Refine steps =  0 -> test acc = 0.4642
+
 Refine steps =  1 -> test acc = 0.6558
+
 Refine steps =  3 -> test acc = 0.8667
+
 Refine steps =  4 -> test acc = 0.8955
+
 Refine steps =  5 -> test acc = 0.9088
+
 Refine steps =  8 -> test acc = 0.9140
