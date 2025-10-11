@@ -94,15 +94,40 @@ Refine steps =  5 -> test acc = 0.9088
 Refine steps =  8 -> test acc = 0.9140
 
 --------
+##  Energy Network Contrastive Investigation
 
-### Citation
+To evaluate whether the **EBT** head learned meaningful class-wise structure in the feature space, we conducted a *contrastive energy analysis* on the **FashionMNIST** test set, after training the head for 5 Epochs.
 
-@misc{gladstone2025energybasedtransformersscalablelearners,
-  title={Energy-Based Transformers are Scalable Learners and Thinkers},
-  author={Alexi Gladstone and Ganesh Nanduru and Md Mofijul Islam and Peixuan Han and Hyeonjeong Ha and Aman Chadha and Yilun Du and Heng Ji and Jundong Li and Tariq Iqbal},
-  year={2025},
-  eprint={2507.02092},
-  archivePrefix={arXiv},
-  primaryClass={cs.LG},
-  url={https://arxiv.org/abs/2507.02092}
-}
+### Procedure
+
+We fix a reference class `CLS` and extract:
+
+* **Feature vectors** ( R_x = { r_x^{(i)} } ) from the frozen ViT backbone for samples belonging to that class.
+* **Refined latent vectors** ( Z_S = { z_S^{(j)} } ) from the EBT model after `S` refinement steps, collected for *all* classes.
+
+For each pair ((r_x^{(i)}, z_S^{(j)})), we compute the scalar energy
+[
+E(r_x^{(i)}, z_S^{(j)}),
+]
+and average the results per class of (z_S^{(j)}).
+This yields an **average energy per class** indicating how compatible the feature representation of the chosen class is with the latent representations of every other class.
+
+### Findings
+
+* **Same-class pairs** consistently exhibit **lower average energy** than cross-class pairs, confirming that the energy function learned a notion of intra-class compatibility in the joint ((r_x, z)) space.
+* **Cross-class energies** are higher overall but **non-uniform**—some visually similar classes (e.g., *Shirt* vs. *Coat*) remain closer in energy than more distinct ones (*Boot* vs. *Bag*).
+* As the **number of refinement steps increases**, all energies shift **downward globally**, indicating that refinement progressively lowers the total energy landscape without proportionally widening inter-class gaps.
+
+### Interpretation
+
+These observations suggest that the current training regime primarily encourages the model to **minimize energy for correct (same-class) pairs**, while providing limited pressure to **raise energy for incorrect (cross-class) pairs**.
+The network thus learns an attractive potential that aligns compatible representations but does not explicitly enforce repulsion between mismatched classes.
+
+### Future Directions
+
+To enhance class contrast and stabilize the energy scale, we could:
+
+* Introduce **InfoNCE-style contrastive losses** to penalize low energies for negatives.
+* Apply **batch-wise normalization** of energies to focus learning on relative rather than absolute scales.
+* Incorporate **hard-negative sampling** to sharpen class boundaries in energy space.
+
