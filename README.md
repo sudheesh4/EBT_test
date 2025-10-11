@@ -113,9 +113,9 @@ and average the results per class of (z_S^{(j)}).
 This yields an **average energy per class** indicating how compatible the feature representation of the chosen class is with the latent representations of every other class.
 
 ### Findings
-
+ (KEYS => 0: T-shirt/top , 1: Trouser, 2: Pullover, 3: Dress, 4: Coat, 5: Sandal, 6: Shirt, 7: Sneaker, 8: Bag, 9: Ankle boot)
 * **Same-class pairs** consistently exhibit **lower average energy** than cross-class pairs, confirming that the energy function learned a notion of intra-class compatibility in the joint ((r_x, z)) space.
-* **Cross-class energies** are higher overall but **non-uniform**—some visually similar classes (e.g., *Shirt* vs. *Coat*) remain closer in energy than more distinct ones (*Boot* vs. *Bag*).
+* **Cross-class energies** are higher overall but **non-uniform**—some visually similar classes (e.g., Label 3 *Dress* vs. Label 0 *T-shirt/top*) remain closer in energy than more distinct ones (Label 5 *Sandal* vs. Label 2 *Pullover*).
 * As the **number of refinement steps increases**, all energies shift **downward globally**, indicating that refinement progressively lowers the total energy landscape without proportionally widening inter-class gaps.
 
 ### Interpretation
