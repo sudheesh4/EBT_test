@@ -1,4 +1,4 @@
-# EBT on MNIST/Fashion-MNIST with a Frozen ViT Backbone
+# Energy Based Model on MNIST/Fashion-MNIST with a Frozen ViT Backbone
 
 This repo contains a compact PyTorch implementation of an **Energy-Based head** (ref: https://energy-based-transformers.github.io/) trained on top of a **frozen Vision Transformer (ViT)** feature extractor. It showcases “**thinking longer helps**?” by iteratively refining a latent `z` via gradient descent on an energy function before producing logits.
 
